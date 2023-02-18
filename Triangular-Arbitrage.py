@@ -397,7 +397,7 @@ def perform_triangular_arbitrage(scrip1, scrip2, scrip3, arbitrage_type,initial_
 
 
 
-markets = exchange.fetchMarkets()
+markets = exchange.fetch_Markets()
 market_symbols = [market['symbol'] for market in markets]
 print(f'No. of market symbols: {len(market_symbols)}')
 
