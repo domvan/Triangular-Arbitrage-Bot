@@ -398,7 +398,13 @@ def perform_triangular_arbitrage(scrip1, scrip2, scrip3, arbitrage_type,initial_
 
 
 markets = exchange.fetchMarkets()
-market_symbols = [market['symbol'] for market in markets]
+#market_symbols = [market['symbol'] for market in markets]
+
+market_symbols = []
+for market in markets:
+    if(market['contract'] == False) and (market['info']['status'] == 'TRADING'):        
+        market_symbols.append(market['symbol'])
+        
 print(f'No. of market symbols: {len(market_symbols)}')
 
 base_combinations = get_crypto_combinations(market_symbols, base_currency)
